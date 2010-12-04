@@ -69,4 +69,57 @@ describe Remarkable::Devise::Matchers::BeADatabaseAuthenticatableMatcher do
       end
     end
   end
+
+  describe "description" do
+    before do
+      @msg = subject.description
+    end
+    
+    specify { @msg.should eql('be a database authenticatable') }
+  end
+
+  context "expectation message" do
+    context "when Devise::Models::DatabaseAuthenticatable not included" do
+      before do
+        subject.matches?(FooUser)
+        
+        @msg = subject.failure_message_for_should
+      end
+      
+      specify { @msg.should match('to include Devise :database_authenticatable model') }
+    end
+
+    context "when model has no email column" do
+      before do
+        subject.stubs(:has_email_column?).returns(false)
+        subject.matches?(User)
+
+        @msg = subject.failure_message_for_should
+      end
+
+      specify { @msg.should match('to have email column') }
+    end
+
+    context "when model has no encrypted_password column" do
+      before do
+        subject.stubs(:has_encrypted_password_column?).returns(false)
+        subject.matches?(User)
+
+        @msg = subject.failure_message_for_should
+      end
+
+      specify { @msg.should match('to have encrypted_password column') }
+    end
+
+    context "when model has no password_salt column" do
+      before do
+        subject.stubs(:has_password_salt_column?).returns(false)
+        subject.matches?(User)
+
+        @msg = subject.failure_message_for_should
+      end
+
+      specify { @msg.should match('to have password_salt column') }
+    end
+  end
 end

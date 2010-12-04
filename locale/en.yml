@@ -4,10 +4,10 @@ en:
       be_a_database_authenticatable:
         description: "be a database authenticatable"
         expectations:
-          has_database_authenticatable_module: "%{subject_name} to include :database_authenticatable, but does not"
-          has_email_column: "%{subject_name} to have an email column"
-          has_encrypted_password_column: "%{subject_name} to have an encrypted_password column"
-          has_password_salt_column: "%{subject_name} to have a password_salt column"
+          included: "%{subject_name} to include Devise :database_authenticatable model"
+          has_email_column: "%{subject_name} to have email column"
+          has_encrypted_password_column: "%{subject_name} to have encrypted_password column"
+          has_password_salt_column: "%{subject_name} to have password_salt column"
       
       be_a_confirmable:
         description: "be a confirmable"
