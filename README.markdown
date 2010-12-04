@@ -20,7 +20,7 @@ Add the require after the remarkable/active_record line in your spec_heplers.rb:
     describe User do
       should_be_a_database_authenticatable
       should_be_a_confirmable
-      should_be_a_reciverable
+      should_be_a_recoverable
       should_be_a_rememberable
       should_be_a_trackable
     end
