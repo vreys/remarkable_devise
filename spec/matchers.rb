@@ -12,4 +12,10 @@ describe Remarkable::Devise::Matchers do
       be_a_confirmable.should be_an_instance_of(Remarkable::Devise::Matchers::BeAConfirmableMatcher)
     end
   end
+
+  describe "#be_a_recoverable" do
+    it "should return Remarkable::Devise::Matchers::BeARecoverableMatcher" do
+      be_a_recoverable.should be_an_instance_of(Remarkable::Devise::Matchers::BeARecoverableMatcher)
+    end
+  end
 end

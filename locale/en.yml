@@ -16,3 +16,9 @@ en:
           has_confirmation_token_column: "%{subject_name} to have confirmation_token column"
           has_confirmed_at_column: "%{subject_name} to have confirmed_at column"
           has_confirmation_sent_at_column: "%{subject_name} to have confirmation_sent_at column"
+
+      be_a_recoverable:
+        description: "be a recoverable"
+        expectations:
+          included: "%{subject_name} to include Devise :recoverable model"
+          has_reset_password_token_column: "%{subject_name} to have reset_password_token column"
