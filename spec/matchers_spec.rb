@@ -18,4 +18,10 @@ describe Remarkable::Devise::Matchers do
       be_a_recoverable.should be_an_instance_of(Remarkable::Devise::Matchers::BeARecoverableMatcher)
     end
   end
+  
+  describe "#be_a_rememberable" do
+    it "should return Remarkable::Devise::Matchers::BeARememberableMatcher" do
+      be_a_rememberable.should be_an_instance_of(Remarkable::Devise::Matchers::BeARememberableMatcher)
+    end
+  end
 end

@@ -22,3 +22,10 @@ en:
         expectations:
           included: "%{subject_name} to include Devise :recoverable model"
           has_reset_password_token_column: "%{subject_name} to have reset_password_token column"
+
+      be_a_rememberable:
+        description: "be a rememberable"
+        expectations:
+          included: "%{subject_name} to include Devise :rememberable model"
+          has_remember_token_column: "%{subject_name} to have remember_token column"
+          has_remember_created_at_column: "%{subject_name} to have remember_created_at column"
