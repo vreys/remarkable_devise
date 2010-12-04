@@ -12,6 +12,8 @@ dir = File.dirname(__FILE__)
 Dir["#{dir}/../../locale/*yml"].each {|f| Remarkable.add_locale(f) }
 
 # Add matchers
+require(File.join(dir, 'devise', 'matchers', 'base.rb'))
+
 Dir[File.join(dir, 'devise', 'matchers', '*.rb')].each do |file|
   require file
 end

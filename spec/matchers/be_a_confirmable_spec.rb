@@ -1,26 +1,19 @@
 require 'spec_helper'
 
-class FooUser < ActiveRecord::Base
-  devise :confirmable
-end
-
-class Foo < ActiveRecord::Base
-end
-
 describe Remarkable::Devise::Matchers::BeAConfirmableMatcher do
   before do
     @valid_columns = ['confirmation_token', 'confirmed_at', 'confirmation_sent_at']
 
-    FooUser.stubs(:column_names).returns(@valid_columns)
+    User.stubs(:column_names).returns(@valid_columns)
   end
 
   context "inclusion of Devise::Models::Confirmable" do
     it "should validate that model has :confirmable Devise model included" do
-      subject.matches?(FooUser).should be_true
+      subject.matches?(User).should be_true
     end
 
     it "should valodate that model has not :confirmable Devise model included" do
-      subject.matches?(Foo).should be_false
+      subject.matches?(FooUser).should be_false
     end
   end
 
@@ -32,13 +25,13 @@ describe Remarkable::Devise::Matchers::BeAConfirmableMatcher do
       end
       
       it "should validate that model has confirmation_token column" do
-        subject.matches?(FooUser).should be_true
+        subject.matches?(User).should be_true
       end
 
       it "should validate that model has no confirmaion_token column" do
-        FooUser.stubs(:column_names).returns(@valid_columns - ['confirmation_token'])
+        User.stubs(:column_names).returns(@valid_columns - ['confirmation_token'])
 
-        subject.matches?(FooUser).should be_false
+        subject.matches?(User).should be_false
       end
     end
 
@@ -49,13 +42,13 @@ describe Remarkable::Devise::Matchers::BeAConfirmableMatcher do
       end
 
       it "should validate that model has confirmed_at column" do
-        subject.matches?(FooUser).should be_true
+        subject.matches?(User).should be_true
       end
 
       it "should validate that model has no confirmed_at column" do
-        FooUser.stubs(:column_names).returns(@valid_columns - ['confirmed_at'])
+        User.stubs(:column_names).returns(@valid_columns - ['confirmed_at'])
         
-        subject.matches?(FooUser).should be_false
+        subject.matches?(User).should be_false
       end
     end
 
@@ -66,13 +59,13 @@ describe Remarkable::Devise::Matchers::BeAConfirmableMatcher do
       end
 
       it "should validate that model has confirmation_sent_at column" do
-        subject.matches?(FooUser).should be_true
+        subject.matches?(User).should be_true
       end
 
       it "should validate that model has no confirmation_sent_at column" do
-        FooUser.stubs(:column_names).returns(@valid_columns - ['confirmation_sent_at'])
+        User.stubs(:column_names).returns(@valid_columns - ['confirmation_sent_at'])
         
-        subject.matches?(FooUser).should be_false
+        subject.matches?(User).should be_false
       end
     end
   end
@@ -88,7 +81,7 @@ describe Remarkable::Devise::Matchers::BeAConfirmableMatcher do
   context "expectation message" do
     context "when Devise::Models::Confirmable not included" do
       before do
-        subject.matches?(Foo)
+        subject.matches?(FooUser)
         
         @msg = subject.failure_message_for_should
       end
@@ -99,7 +92,7 @@ describe Remarkable::Devise::Matchers::BeAConfirmableMatcher do
     context "when model has no confirmation_token column" do
       before do
         subject.stubs(:has_confirmation_token_column?).returns(false)
-        subject.matches?(FooUser)
+        subject.matches?(User)
 
         @msg = subject.failure_message_for_should
       end
@@ -110,7 +103,7 @@ describe Remarkable::Devise::Matchers::BeAConfirmableMatcher do
     context "when model has no confirmed_at column" do
       before do
         subject.stubs(:has_confirmed_at_column?).returns(false)
-        subject.matches?(FooUser)
+        subject.matches?(User)
 
         @msg = subject.failure_message_for_should
       end
@@ -121,7 +114,7 @@ describe Remarkable::Devise::Matchers::BeAConfirmableMatcher do
     context "when model has no confirmation_sent_at column" do
       before do
         subject.stubs(:has_confirmation_sent_at_column?).returns(false)
-        subject.matches?(FooUser)
+        subject.matches?(User)
 
         @msg = subject.failure_message_for_should
       end
