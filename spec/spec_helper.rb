@@ -1,5 +1,3 @@
-require 'rails'
-require 'active_record'
 require 'mocha'
 
 require File.join(File.dirname(__FILE__), '..', 'lib', 'remarkable', 'devise')

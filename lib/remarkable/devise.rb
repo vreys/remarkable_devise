@@ -1,3 +1,7 @@
+# Load rails and AR
+require 'rails'
+require 'active_record'
+
 # Load remarkable
 require 'remarkable/core'
 require 'remarkable/active_record'
