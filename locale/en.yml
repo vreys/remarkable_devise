@@ -29,3 +29,13 @@ en:
           included: "%{subject_name} to include Devise :rememberable model"
           has_remember_token_column: "%{subject_name} to have remember_token column"
           has_remember_created_at_column: "%{subject_name} to have remember_created_at column"
+
+      be_a_trackable:
+        description: "be a trackable"
+        expectations:
+          included: "%{subject_name} to include Devise :trackable model"
+          has_sign_in_count_column: "%{subject_name} to have sign_in_count column"
+          has_current_sign_in_at_column: "%{subject_name} to have current_sign_in_at column"
+          has_last_sign_in_at_column: "%{subject_name} to have last_sign_in_at column"
+          has_current_sign_in_ip_column: "%{subject_name} to have current_sign_in_ip column"
+          has_last_sign_in_ip_column: "%{subject_name} to have last_sign_in_ip column"

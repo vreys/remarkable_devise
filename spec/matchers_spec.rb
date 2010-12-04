@@ -24,4 +24,10 @@ describe Remarkable::Devise::Matchers do
       be_a_rememberable.should be_an_instance_of(Remarkable::Devise::Matchers::BeARememberableMatcher)
     end
   end
+
+  describe "#be_a_trackable" do
+    it "should return Remarkable::Devise::Matchers::BeATrackableMatcher" do
+      be_a_trackable.should be_an_instance_of(Remarkable::Devise::Matchers::BeATrackableMatcher)
+    end
+  end
 end
