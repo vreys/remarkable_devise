@@ -9,10 +9,6 @@ module Remarkable
         def included?
           subject_class.ancestors.include?(::Devise::Models::Recoverable)
         end
-
-        def has_reset_password_token_column?
-          has_column?('reset_password_token')
-        end
       end
 
       def be_a_recoverable

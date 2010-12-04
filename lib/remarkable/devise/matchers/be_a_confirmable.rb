@@ -10,18 +10,6 @@ module Remarkable
         def included?
           subject_class.ancestors.include?(::Devise::Models::Confirmable)
         end
-
-        def has_confirmation_token_column?
-          has_column?('confirmation_token')
-        end
-
-        def has_confirmed_at_column?
-          has_column?('confirmed_at')
-        end
-
-        def has_confirmation_sent_at_column?
-          has_column?('confirmation_sent_at')
-        end
       end
 
       def be_a_confirmable

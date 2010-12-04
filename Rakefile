@@ -1,23 +1,10 @@
 require 'rake'
-require 'rake/testtask'
-require 'rake/rdoctask'
+require "rspec/core/rake_task"
 
-desc 'Default: run unit tests.'
-task :default => :test
+desc 'Default: run RSpec examples'
+task :default => :spec
 
-desc 'Test the remarkable_devise plugin.'
-Rake::TestTask.new(:test) do |t|
-  t.libs << 'lib'
-  t.libs << 'test'
-  t.pattern = 'test/**/*_test.rb'
-  t.verbose = true
-end
-
-desc 'Generate documentation for the remarkable_devise plugin.'
-Rake::RDocTask.new(:rdoc) do |rdoc|
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = 'RemarkableDevise'
-  rdoc.options << '--line-numbers' << '--inline-source'
-  rdoc.rdoc_files.include('README')
-  rdoc.rdoc_files.include('lib/**/*.rb')
+desc "Run all examples"
+RSpec::Core::RakeTask.new(:spec) do |t|
+  t.rspec_path = '/usr/bin/rspec'
 end
