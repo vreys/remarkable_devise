@@ -1,6 +1,6 @@
 # Remarkable Devise
 
-Remarkable Devise is a collection of matchers for [Devise](http://github.com/plataformatec/devise).
+Remarkable Devise is a collection of RSpec matchers for [Devise](http://github.com/plataformatec/devise).
 
 ## Install
 
