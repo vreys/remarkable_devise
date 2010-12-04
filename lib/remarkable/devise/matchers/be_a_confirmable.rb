@@ -23,6 +23,10 @@ module Remarkable
           has_column?('confirmation_sent_at')
         end
       end
+
+      def be_a_confirmable
+        BeAConfirmableMatcher.new
+      end
     end
   end
 end
