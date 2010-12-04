@@ -1,7 +1,8 @@
 require 'rails'
 require 'active_record'
+require 'mocha'
 
-require File.join(File.dirname(__FILE__), '..', 'lib', 'remarkable_devise')
+require File.join(File.dirname(__FILE__), '..', 'lib', 'remarkable', 'devise')
 
 ActiveRecord::Base.establish_connection(
   :adapter => 'sqlite3',
@@ -9,5 +10,5 @@ ActiveRecord::Base.establish_connection(
 )
 
 RSpec.configure do |config|
-  config.mock_with :rspec
+  config.mock_with :mocha
 end

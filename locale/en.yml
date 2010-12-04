@@ -1,0 +1,10 @@
+en:
+  remarkable:
+    devise:
+      be_a_database_authenticatable:
+        description: "be a database authenticatable"
+        expectations:
+          has_database_authenticatable_module: "%{subject_name} to include :database_authenticatable, but does not"
+          has_email_column: "%{subject_name} to have an email column"
+          has_encrypted_password_column: "%{subject_name} to have an encrypted_password column"
+          has_password_salt_column: "%{subject_name} to have a password_salt column"

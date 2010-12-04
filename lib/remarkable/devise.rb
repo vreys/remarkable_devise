@@ -8,8 +8,11 @@ require 'devise/orm/active_record'
 
 dir = File.dirname(__FILE__)
 
+# Add default locale
+Dir["#{dir}/../../locale/*yml"].each {|f| Remarkable.add_locale(f) }
+
 # Add matchers
-Dir[File.join(dir, 'matchers', '*.rb')].each do |file|
+Dir[File.join(dir, 'devise', 'matchers', '*.rb')].each do |file|
   require file
 end
 
