@@ -18,6 +18,7 @@ en:
           has_confirmation_token_column: "%{subject_name} to have confirmation_token column"
           has_confirmed_at_column: "%{subject_name} to have confirmed_at column"
           has_confirmation_sent_at_column: "%{subject_name} to have confirmation_sent_at column"
+          confirmation_period_matches: "%{subject_name} to have %{confirm_within} of confirmation period, got %{actual}"
 
       be_a_recoverable:
         description: "be a recoverable"

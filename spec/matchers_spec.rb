@@ -9,7 +9,7 @@ describe Remarkable::Devise::Matchers do
 
   describe "#be_a_confirmable" do
     it "should return Remarkable::Devise::Matchers::BeAConfirmableMatcher" do
-      be_a_confirmable.should be_an_instance_of(Remarkable::Devise::Matchers::BeAConfirmableMatcher)
+      be_a_confirmable(:confirm_within => 2.days).should be_an_instance_of(Remarkable::Devise::Matchers::BeAConfirmableMatcher)
     end
   end
 

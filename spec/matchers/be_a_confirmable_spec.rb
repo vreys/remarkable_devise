@@ -17,6 +17,18 @@ describe Remarkable::Devise::Matchers::BeAConfirmableMatcher do
     end
   end
 
+  context "options validation" do
+    describe :confirm_within do
+      it "should validate that model has proper :confirm_within" do
+        subject.class.new(:confirm_within => 2.days).matches?(User).should be_true
+      end
+
+      it "should validate that model hasn't proper :confirm_within" do
+        subject.class.new(:confirm_within => 3.days).matches?(User).should be_false
+      end
+    end
+  end
+
   context "columns validation" do
     context "confirmation_token column" do
       before do
@@ -120,6 +132,15 @@ describe Remarkable::Devise::Matchers::BeAConfirmableMatcher do
       end
 
       specify { @msg.should match('to have confirmation_sent_at column') }
+    end
+
+    context "when :confirm_within doesn't match" do
+      before do
+        @matcher = subject.class.new(:confirm_within => 3.days)
+        @matcher.matches?(User)
+      end
+
+      specify { @matcher.failure_message_for_should.should match("User to have 3 days of confirmation period, got 2 days")}
     end
   end
 end
