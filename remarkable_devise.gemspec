@@ -8,8 +8,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Vasily Reys"]
   s.email       = "reys.vasily@gmail.com"
   s.homepage    = "http://github.com/vreys/remarkable_devise"
-  s.summary     = "remarkable_devise_#{Remarkable::Devise::Version::STRING}"
-  s.description = "Devise remarkable rspec matchers"
+  s.summary     = "Devise remarkable rspec matchers"
 
   s.rubygems_version  = "1.3.7"
   s.rubyforge_project = "remarkbl-devise"
