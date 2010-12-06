@@ -19,10 +19,12 @@ Add the require after the remarkable/active_record line in your spec_heplers.rb:
     # spec/models/user_spec.rb   
     describe User do
       should_be_a_database_authenticatable
+      should_be_a_token_authenticatable
       should_be_a_confirmable
       should_be_a_recoverable
       should_be_a_rememberable
       should_be_a_trackable
+      should_be_a_validatable
     end
 
 ## See alse
