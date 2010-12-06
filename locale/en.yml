@@ -8,6 +8,8 @@ en:
           has_email_column: "%{subject_name} to have email column"
           has_encrypted_password_column: "%{subject_name} to have encrypted_password column"
           has_password_salt_column: "%{subject_name} to have password_salt column"
+          stretches_match: "%{subject_name} to have password stretches equal to %{stretches}, got %{actual}"
+          encryptor_match: "%{subject_name} to have %{encryptor} password encryptor, got %{actual}"
       
       be_a_confirmable:
         description: "be a confirmable"
