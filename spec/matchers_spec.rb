@@ -30,4 +30,10 @@ describe Remarkable::Devise::Matchers do
       be_a_trackable.should be_an_instance_of(Remarkable::Devise::Matchers::BeATrackableMatcher)
     end
   end
+
+  describe "#be_a_validatable" do
+    it "should return Remarkable::Devise::Matchers::BeAValidatableMatcher" do
+      be_a_validatable.should be_an_instance_of(Remarkable::Devise::Matchers::BeAValidatableMatcher)
+    end
+  end
 end

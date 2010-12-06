@@ -39,3 +39,8 @@ en:
           has_last_sign_in_at_column: "%{subject_name} to have last_sign_in_at column"
           has_current_sign_in_ip_column: "%{subject_name} to have current_sign_in_ip column"
           has_last_sign_in_ip_column: "%{subject_name} to have last_sign_in_ip column"
+
+      be_a_validatable:
+        description: "be a validatable"
+        expectations:
+          included: "%{subject_name} to include Devise :validatable model"
