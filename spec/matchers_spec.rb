@@ -21,7 +21,7 @@ describe Remarkable::Devise::Matchers do
   
   describe "#be_a_rememberable" do
     it "should return Remarkable::Devise::Matchers::BeARememberableMatcher" do
-      be_a_rememberable.should be_an_instance_of(Remarkable::Devise::Matchers::BeARememberableMatcher)
+      be_a_rememberable(:remember_for => 2.weeks).should be_an_instance_of(Remarkable::Devise::Matchers::BeARememberableMatcher)
     end
   end
 

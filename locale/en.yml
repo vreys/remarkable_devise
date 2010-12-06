@@ -32,6 +32,15 @@ en:
           included: "%{subject_name} to include Devise :rememberable model"
           has_remember_token_column: "%{subject_name} to have remember_token column"
           has_remember_created_at_column: "%{subject_name} to have remember_created_at column"
+          options_match: "%{subject_name} to be rememberable with options %{options}, got %{actual}"
+        optionals:
+          remember_for:
+            positive: "with %{inspect} remember period"
+          extend_remember_period:
+            positive: "with extendable remember period"
+            negative: "without extandable remember period"
+          cookie_domain:
+            positive: "with %{inspect} cookie domain"
 
       be_a_trackable:
         description: "be a trackable"
