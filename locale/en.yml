@@ -44,3 +44,9 @@ en:
         description: "be a validatable"
         expectations:
           included: "%{subject_name} to include Devise :validatable model"
+
+      be_a_token_authenticatable:
+        description: "be a token authenticatable"
+        expectations:
+          included: "%{subject_name} to include Devise :token_authenticatable model"
+          has_authentication_token_column: "%{subject_name} to have authentication_token column"

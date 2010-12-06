@@ -36,4 +36,10 @@ describe Remarkable::Devise::Matchers do
       be_a_validatable.should be_an_instance_of(Remarkable::Devise::Matchers::BeAValidatableMatcher)
     end
   end
+
+  describe "#be_a_token_authenticatable" do
+    it "should return Remarkable::Devise::Matchers::BeATokenAuthenticatableMatcher" do
+      be_a_token_authenticatable.should be_an_instance_of(Remarkable::Devise::Matchers::BeATokenAuthenticatableMatcher)
+    end
+  end
 end
