@@ -1,15 +1,10 @@
 require 'spec_helper'
 
-class Bar < ActiveRecord::Base
-  devise :database_authenticatable, :stretches => 15, :encryptor => :clearance_sha1
-end
-
 describe Remarkable::Devise::Matchers::BeADatabaseAuthenticatableMatcher do
   before do
     @valid_columns = ['email', 'encrypted_password', 'password_salt']
 
     User.stubs(:column_names).returns(@valid_columns)
-    Bar.stubs(:column_names).returns(@valid_columns)
   end
 
   context "inclusion of Devise::Models::DatabaseAuthenticatable" do
@@ -25,21 +20,21 @@ describe Remarkable::Devise::Matchers::BeADatabaseAuthenticatableMatcher do
   context "options validation" do
     describe :stretches do
       it "should validate that a model has proper :stratches" do
-        subject.class.new(:stretches => 15).matches?(Bar).should be_true
+        subject.class.new(:stretches => 15).matches?(User).should be_true
       end
 
       it "should validate that a model hasn't proper :stratches" do
-        subject.class.new(:stretches => 10).matches?(Bar).should be_false
+        subject.class.new(:stretches => 10).matches?(User).should be_false
       end
     end
 
     describe :encryptor do
       it "should validate that a model has proper :encryptor" do
-        subject.class.new(:encryptor => :clearance_sha1).matches?(Bar).should be_true
+        subject.class.new(:encryptor => :clearance_sha1).matches?(User).should be_true
       end
 
       it "should validate that a model hasn't proper :encryptor" do
-        subject.class.new(:encryptor => :bcrypt).matches?(Bar).should be_false
+        subject.class.new(:encryptor => :bcrypt).matches?(User).should be_false
       end
     end
   end
@@ -152,19 +147,19 @@ describe Remarkable::Devise::Matchers::BeADatabaseAuthenticatableMatcher do
     context "when :stretches doesn't match" do
       before do
         @matcher = subject.class.new(:stretches => 10)
-        @matcher.matches?(Bar)
+        @matcher.matches?(User)
       end
 
-      specify { @matcher.failure_message_for_should.should match('Bar to have password stretches equal to 10, got 15') }
+      specify { @matcher.failure_message_for_should.should match('User to have password stretches equal to 10, got 15') }
     end
 
     context "when :encryptor doesn't match" do
       before do
         @matcher = subject.class.new(:encryptor => :bcrypt)
-        @matcher.matches?(Bar)
+        @matcher.matches?(User)
       end
 
-      specify { @matcher.failure_message_for_should.should match('Bar to have :bcrypt password encryptor, got :clearance_sha1') }
+      specify { @matcher.failure_message_for_should.should match('User to have :bcrypt password encryptor, got :clearance_sha1') }
     end
   end
 end

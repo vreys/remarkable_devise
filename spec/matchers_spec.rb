@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Remarkable::Devise::Matchers do
   describe "#be_a_database_authenticatable" do
     it "should return Remarkable::Devise::Matchers::BeADatabaseAuthenticatableMatcher" do
-      be_a_database_authenticatable.should be_an_instance_of(Remarkable::Devise::Matchers::BeADatabaseAuthenticatableMatcher)
+      be_a_database_authenticatable(:stretches => 10).should be_an_instance_of(Remarkable::Devise::Matchers::BeADatabaseAuthenticatableMatcher)
     end
   end
 
