@@ -31,7 +31,7 @@ Following the BDD way, we first write a specs:
       it { should be_a_rememberable(:remember_for => 2.weeks) }
       it { should be_a_validatable(:password_length => 8..20) }
       it { should be_a_timeoutable(:timeout_in => 15.minutes) }
-      it { should be_a_token_authenticatable }
+      it { should be_a_token_authenticatable(:token_authentication_key => :auth_token) }
       it { should be_a_trackable }
       it { should be_a_registerable }
       it { should be_a_recoverable }
