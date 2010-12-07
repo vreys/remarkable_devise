@@ -1,7 +1,9 @@
+require File.join(File.dirname(__FILE__), 'be_an_authenticatable_matcher')
+
 module Remarkable
   module Devise
     module Matchers
-      class BeADatabaseAuthenticatableMatcher < Base
+      class BeADatabaseAuthenticatableMatcher < BeAnAuthenticatableMatcher
         arguments
 
         assertion :included?, :has_email_column?, :has_encrypted_password_column?, :has_password_salt_column?,

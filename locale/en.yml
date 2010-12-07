@@ -4,6 +4,7 @@ en:
       be_a_database_authenticatable:
         description: "be a database authenticatable"
         expectations:
+          has_authenticatable_module_included: "%{subject_name} to have Devise :authenticatable model"
           included: "%{subject_name} to include Devise :database_authenticatable model"
           options_match: "%{subject_name} to be a database authenticatable with options %{options}, got %{actual}"
           has_email_column: "%{subject_name} to have email column"
@@ -16,6 +17,11 @@ en:
             positive: "with password stretches %{inspect}"
           encryptor:
             positive: "with %{inspect} password encryptor"
+          authentication_keys:
+            positive: "with %{inspect} as authentication keys"
+          params_authenticatable:
+            positive: "with params authenticatable"
+            negative: "without params authenticatable"
       
       be_a_confirmable:
         description: "be a confirmable"

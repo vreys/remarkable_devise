@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :stretches => 15, :encryptor => :clearance_sha1
+  devise :database_authenticatable, :stretches => 15, :encryptor => :clearance_sha1, :authentication_keys => [:email, :login], :params_authenticatable => false
   devise :confirmable, :confirm_within => 2.days
   devise :recoverable
   devise :rememberable, :remember_for => 2.weeks, :extend_remember_period => true, :cookie_domain => 'foo'

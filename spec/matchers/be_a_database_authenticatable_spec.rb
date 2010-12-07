@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Remarkable::Devise::Matchers::BeADatabaseAuthenticatableMatcher do
+  it_should_behave_like "any Devise authentication model"
+  
   before do
     @valid_columns = ['email', 'encrypted_password', 'password_salt']
 
@@ -119,6 +121,7 @@ describe Remarkable::Devise::Matchers::BeADatabaseAuthenticatableMatcher do
   context "expectation message" do
     context "when Devise::Models::DatabaseAuthenticatable not included" do
       before do
+        subject.stubs(:has_authenticatable_module_included?).returns(true)
         subject.matches?(FooUser)
         
         @msg = subject.failure_message_for_should
