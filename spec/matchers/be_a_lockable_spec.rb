@@ -261,5 +261,14 @@ describe Remarkable::Devise::Matchers::BeALockableMatcher do
 
       specify { subject.failure_message_for_should.should match("User to have locked_at column") }
     end
+
+    context "when options doesn't match" do
+      before do
+        @matcher = subject.class.new(:maximum_attempts => 15)
+        @matcher.matches?(User)
+      end
+
+      specify { @matcher.failure_message_for_should.should match("User to be a lockable with options (.+), got (.+)") }
+    end
   end
 end

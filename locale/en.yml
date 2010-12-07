@@ -99,6 +99,7 @@ en:
           has_failed_attempts_column: "%{subject_name} to have failed_attempts column"
           has_unlock_token_column: "%{subject_name} to have unlock_token column"
           has_locked_at_column: "%{subject_name} to have locked_at column"
+          options_match: "%{subject_name} to be a lockable with options %{options}, got %{actual}"
         optionals:
           maximum_attempts:
             positive: "with %{inspect} maximum attempts"
