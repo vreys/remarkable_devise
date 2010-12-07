@@ -33,7 +33,7 @@ describe Remarkable::Devise::Matchers do
 
   describe "#be_a_validatable" do
     it "should return Remarkable::Devise::Matchers::BeAValidatableMatcher" do
-      be_a_validatable.should be_an_instance_of(Remarkable::Devise::Matchers::BeAValidatableMatcher)
+      be_a_validatable(:password_length => 8..20).should be_an_instance_of(Remarkable::Devise::Matchers::BeAValidatableMatcher)
     end
   end
 

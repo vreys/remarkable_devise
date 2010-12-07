@@ -66,6 +66,12 @@ en:
         description: "be a validatable"
         expectations:
           included: "%{subject_name} to include Devise :validatable model"
+          options_match: "%{subject_name} to be a validatable with options %{options}, got %{actual}"
+        optionals:
+          password_length: 
+            positive: "with password length %{inspect}"
+          email_regexp:
+            positive: "with email regexp %{inspect}"
 
       be_a_token_authenticatable:
         description: "be a token authenticatable"

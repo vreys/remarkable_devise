@@ -2,7 +2,11 @@ module Remarkable
   module Devise
     module Matchers
       class BeAValidatableMatcher < Base
-        assertion :included?
+        arguments
+        
+        assertion :included?, :options_match?
+
+        optionals :password_length, :email_regexp
 
         protected
 
@@ -11,8 +15,8 @@ module Remarkable
         end
       end
 
-      def be_a_validatable
-        BeAValidatableMatcher.new
+      def be_a_validatable(*args, &block)
+        BeAValidatableMatcher.new(*args, &block).spec(self)
       end
     end
   end
