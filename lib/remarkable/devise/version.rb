@@ -1,7 +1,7 @@
 module Remarkable
   module Devise
     module Version
-      STRING = '1.0.0.alpha3'
+      STRING = '1.0.0'
     end
   end
 end
