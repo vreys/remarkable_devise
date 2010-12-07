@@ -48,4 +48,10 @@ describe Remarkable::Devise::Matchers do
       be_a_timeoutable(:timeout_in => 5.minutes).should be_an_instance_of(Remarkable::Devise::Matchers::BeATimeoutableMatcher)
     end
   end
+
+  describe "#be_a_lockable" do
+    it "should return Remarkable::Devise::Matchers::BeALockableMatcher" do
+      be_a_lockable(:maximum_attempts => 10).should be_an_instance_of(Remarkable::Devise::Matchers::BeALockableMatcher)
+    end
+  end
 end

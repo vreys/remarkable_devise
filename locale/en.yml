@@ -91,3 +91,20 @@ en:
         optionals:
           timeout_in: 
             positive: "within %{inspect}"
+
+      be_a_lockable:
+        description: "be a lockable"
+        expectations:
+          included: "%{subject_name} to have Devise :lockable model"
+          has_failed_attempts_column: "%{subject_name} to have failed_attempts column"
+          has_unlock_token_column: "%{subject_name} to have unlock_token column"
+          has_locked_at_column: "%{subject_name} to have locked_at column"
+        optionals:
+          maximum_attempts:
+            positive: "with %{inspect} maximum attempts"
+          lock_strategy:
+            positive: "with %{inspect} lock strategy"
+          unlock_strategy:
+            positive: "with %{inspect} unlock strategy"
+          unlock_in:
+            positive: "with unlock in %{inspect}"
