@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency(%q<rspec>, [">=2.1.0"])
   s.add_runtime_dependency(%q<rails>, [">=3.0.1"])
   s.add_runtime_dependency(%q<activerecord>, [">=3.0.1"])
-  s.add_runtime_dependency(%q<remarkable_activerecord>, ["4.0.0.alpha4"])
+  s.add_runtime_dependency(%q<remarkable_activerecord>, [">=4.0.0.alpha4"])
   s.add_runtime_dependency(%q<devise>, [">=1.1.3"])
 
   s.add_development_dependency "mocha"
