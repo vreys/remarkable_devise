@@ -78,3 +78,7 @@ en:
         expectations:
           included: "%{subject_name} to include Devise :token_authenticatable model"
           has_authentication_token_column: "%{subject_name} to have authentication_token column"
+          options_match: "%{subject_name} to be a token authenticatable with options %{options}, got %{actual}"
+        optionals:
+          token_authentication_key:
+            positive: "with %{inspect} as token authentication key"

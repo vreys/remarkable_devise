@@ -17,6 +17,18 @@ describe Remarkable::Devise::Matchers::BeATokenAuthenticatableMatcher do
     end
   end
 
+  describe "options validation" do
+    describe :token_authentication_key do
+      it "should validate that model is configured with proper :token_authentication_key option" do
+        subject.class.new(:token_authentication_key => :auth_token).matches?(User).should be_true
+      end
+
+      it "should validate that model isn't configured with proper :token_authentication_key option" do
+        subject.class.new(:token_authentication_key => :authen_foo_key).matches?(User).should be_false
+      end
+    end
+  end
+
   context "columns validation" do
     before do
       subject.stubs(:included?).returns(true)
@@ -36,7 +48,18 @@ describe Remarkable::Devise::Matchers::BeATokenAuthenticatableMatcher do
   end
 
   describe "description" do
-    specify { subject.description.should eql('be a token authenticatable') }
+    context "when matching without options" do
+      specify { subject.description.should eql('be a token authenticatable') }
+    end
+
+    context "when matching with :token_authentication_key option" do
+      before do
+        @matcher = subject.class.new(:token_authentication_key => :auth_token)
+        @matcher.matches?(User)
+      end
+
+      specify { @matcher.description.should eql("be a token authenticatable with :auth_token as token authentication key") }
+    end
   end
 
   describe "expectation message" do
@@ -55,6 +78,15 @@ describe Remarkable::Devise::Matchers::BeATokenAuthenticatableMatcher do
       end
 
       specify { subject.failure_message_for_should.should match("to have authentication_token column") }
+    end
+
+    context "when options doesn't match" do
+      before do
+        @matcher = subject.class.new(:token_authentication_key => :auth_foo_key)
+        @matcher.matches?(User)
+      end
+
+      specify { @matcher.failure_message_for_should.should match("User to be a token authenticatable with options (.+), got (.+)") }
     end
   end
 end

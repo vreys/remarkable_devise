@@ -39,7 +39,7 @@ describe Remarkable::Devise::Matchers do
 
   describe "#be_a_token_authenticatable" do
     it "should return Remarkable::Devise::Matchers::BeATokenAuthenticatableMatcher" do
-      be_a_token_authenticatable.should be_an_instance_of(Remarkable::Devise::Matchers::BeATokenAuthenticatableMatcher)
+      be_a_token_authenticatable(:token_authentication_key => :auth_token).should be_an_instance_of(Remarkable::Devise::Matchers::BeATokenAuthenticatableMatcher)
     end
   end
 end

@@ -2,8 +2,12 @@ module Remarkable
   module Devise
     module Matchers
       class BeATokenAuthenticatableMatcher < Base
-        assertions :included?, :has_authentication_token_column?
+        arguments
+        
+        assertions :included?, :has_authentication_token_column?, :options_match?
 
+        optionals :token_authentication_key
+        
         protected
 
         def included?
@@ -11,8 +15,8 @@ module Remarkable
         end
       end
 
-      def be_a_token_authenticatable
-        BeATokenAuthenticatableMatcher.new
+      def be_a_token_authenticatable(*args, &block)
+        BeATokenAuthenticatableMatcher.new(*args, &block).spec(self)
       end
     end
   end
