@@ -54,4 +54,10 @@ describe Remarkable::Devise::Matchers do
       be_a_lockable(:maximum_attempts => 10).should be_an_instance_of(Remarkable::Devise::Matchers::BeALockableMatcher)
     end
   end
+
+  describe "#be_a_registerable" do
+    it "should return Remarkable::Devise::Matchers::BeARegisterableMatcher" do
+      be_a_registerable.should be_an_instance_of(Remarkable::Devise::Matchers::BeARegisterableMatcher)
+    end
+  end
 end

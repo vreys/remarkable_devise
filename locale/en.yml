@@ -109,3 +109,8 @@ en:
             positive: "with %{inspect} unlock strategy"
           unlock_in:
             positive: "with unlock in %{inspect}"
+
+      be_a_registerable:
+        description: "be a registerable"
+        expectations:
+          included: "%{subject_name} to have Devise :registerable model"

@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   devise :token_authenticatable, :token_authentication_key => :auth_token
   devise :timeoutable, :timeout_in => 15.minutes
   devise :lockable, :maximum_attempts => 10, :lock_strategy => :none, :unlock_strategy => :time, :unlock_in => 5.hours
+  devise :registerable
 end
 
 class FooUser < ActiveRecord::Base
