@@ -5,7 +5,7 @@ module Remarkable
         arguments
         
         assertion :included?, :has_confirmation_token_column?, :has_confirmed_at_column?,
-        :has_confirmation_sent_at_column?, :confirmation_period_matches?
+        :has_confirmation_sent_at_column?, :options_match?
 
         optional :confirm_within
 
@@ -13,12 +13,6 @@ module Remarkable
 
         def included?
           subject_class.ancestors.include?(::Devise::Models::Confirmable)
-        end
-
-        def confirmation_period_matches?
-          return true unless @options.key?(:confirm_within)
-
-          return subject_class.confirm_within == @options[:confirm_within], :actual => subject_class.confirm_within.inspect
         end
       end
 

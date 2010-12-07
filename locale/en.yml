@@ -5,20 +5,30 @@ en:
         description: "be a database authenticatable"
         expectations:
           included: "%{subject_name} to include Devise :database_authenticatable model"
+          options_match: "%{subject_name} to be a database authenticatable with options %{options}, got %{actual}"
           has_email_column: "%{subject_name} to have email column"
           has_encrypted_password_column: "%{subject_name} to have encrypted_password column"
           has_password_salt_column: "%{subject_name} to have password_salt column"
           stretches_match: "%{subject_name} to have password stretches equal to %{stretches}, got %{actual}"
           encryptor_match: "%{subject_name} to have %{encryptor} password encryptor, got %{actual}"
+        optionals:
+          stretches:
+            positive: "with password stretches %{inspect}"
+          encryptor:
+            positive: "with %{inspect} password encryptor"
       
       be_a_confirmable:
         description: "be a confirmable"
         expectations:
           included: "%{subject_name} to include Devise :confirmable model"
+          options_match: "%{subject_name} to be a confirmable with options %{options}, got %{actual}"
           has_confirmation_token_column: "%{subject_name} to have confirmation_token column"
           has_confirmed_at_column: "%{subject_name} to have confirmed_at column"
           has_confirmation_sent_at_column: "%{subject_name} to have confirmation_sent_at column"
           confirmation_period_matches: "%{subject_name} to have %{confirm_within} of confirmation period, got %{actual}"
+        optionals:
+          confirm_within:
+            positive: "within %{inspect}"
 
       be_a_recoverable:
         description: "be a recoverable"

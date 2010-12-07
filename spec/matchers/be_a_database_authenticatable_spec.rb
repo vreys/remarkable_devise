@@ -93,11 +93,27 @@ describe Remarkable::Devise::Matchers::BeADatabaseAuthenticatableMatcher do
   end
 
   describe "description" do
-    before do
-      @msg = subject.description
+    context "when matching without options" do
+      specify { subject.description.should eql('be a database authenticatable') }
     end
-    
-    specify { @msg.should eql('be a database authenticatable') }
+
+    context "when matching with :stretches option" do
+      before do
+        @matcher = subject.class.new(:stretches => 15)
+        @matcher.matches?(User)
+      end
+
+      specify { @matcher.description.should eql("be a database authenticatable with password stretches 15") }
+    end
+
+    context "when matching with :encryptor option" do
+      before do
+        @matcher = subject.class.new(:encryptor => :bcrypt)
+        @matcher.matches?(User)
+      end
+
+      specify { @matcher.description.should eql("be a database authenticatable with :bcrypt password encryptor") }
+    end
   end
 
   context "expectation message" do
@@ -144,22 +160,13 @@ describe Remarkable::Devise::Matchers::BeADatabaseAuthenticatableMatcher do
       specify { @msg.should match('to have password_salt column') }
     end
 
-    context "when :stretches doesn't match" do
+    context "when options doesn't match" do
       before do
         @matcher = subject.class.new(:stretches => 10)
         @matcher.matches?(User)
       end
 
-      specify { @matcher.failure_message_for_should.should match('User to have password stretches equal to 10, got 15') }
-    end
-
-    context "when :encryptor doesn't match" do
-      before do
-        @matcher = subject.class.new(:encryptor => :bcrypt)
-        @matcher.matches?(User)
-      end
-
-      specify { @matcher.failure_message_for_should.should match('User to have :bcrypt password encryptor, got :clearance_sha1') }
+      specify { @matcher.failure_message_for_should.should match('User to be a database authenticatable with options (.+), got (.+)') }
     end
   end
 end

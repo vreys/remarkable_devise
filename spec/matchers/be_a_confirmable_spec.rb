@@ -83,11 +83,18 @@ describe Remarkable::Devise::Matchers::BeAConfirmableMatcher do
   end
 
   describe "description" do
-    before do
-      @msg = subject.description
+    context "when matching without options" do
+      specify { subject.description.should eql('be a confirmable') }
     end
-    
-    specify { @msg.should eql('be a confirmable') }
+
+    context "when matching with :confirm_within" do
+      before do
+        @matcher = subject.class.new(:confirm_within => 5.days)
+        @matcher.matches?(User)
+      end
+
+      specify { @matcher.description.should eql("be a confirmable within 5 days") }
+    end
   end
 
   context "expectation message" do
@@ -140,7 +147,7 @@ describe Remarkable::Devise::Matchers::BeAConfirmableMatcher do
         @matcher.matches?(User)
       end
 
-      specify { @matcher.failure_message_for_should.should match("User to have 3 days of confirmation period, got 2 days")}
+      specify { @matcher.failure_message_for_should.should match("User to be a confirmable with options (.+), got (.+)")}
     end
   end
 end
