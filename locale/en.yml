@@ -82,3 +82,12 @@ en:
         optionals:
           token_authentication_key:
             positive: "with %{inspect} as token authentication key"
+      
+      be_a_timeoutable:
+        description: "be a timeoutable"
+        expectations:
+          included: "%{subject_name} to include Devise :timeoutable model"
+          options_match: "%{subject_name} to be a timeoutable with options %{options}, got %{actual}"
+        optionals:
+          timeout_in: 
+            positive: "within %{inspect}"

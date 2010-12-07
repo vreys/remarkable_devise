@@ -1,10 +1,12 @@
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :confirmable, :recoverable,
-  :rememberable, :trackable, :validatable, :token_authenticatable,
-  :confirm_within => 2.days, :stretches => 15, :encryptor => :clearance_sha1,
-  :remember_for => 2.weeks, :extend_remember_period => true, :cookie_domain => 'foo',
-  :password_length => 8..20, :email_regexp => /^([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})$/i,
-  :token_authentication_key => :auth_token
+  devise :database_authenticatable, :stretches => 15, :encryptor => :clearance_sha1
+  devise :confirmable, :confirm_within => 2.days
+  devise :recoverable
+  devise :rememberable, :remember_for => 2.weeks, :extend_remember_period => true, :cookie_domain => 'foo'
+  devise :trackable
+  devise :validatable, :password_length => 8..20, :email_regexp => /^([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})$/i
+  devise :token_authenticatable, :token_authentication_key => :auth_token
+  devise :timeoutable, :timeout_in => 15.minutes
 end
 
 class FooUser < ActiveRecord::Base

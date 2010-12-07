@@ -42,4 +42,10 @@ describe Remarkable::Devise::Matchers do
       be_a_token_authenticatable(:token_authentication_key => :auth_token).should be_an_instance_of(Remarkable::Devise::Matchers::BeATokenAuthenticatableMatcher)
     end
   end
+
+  describe "#be_a_timeoutable" do
+    it "should return Remarkable::Devise::Matchers::BeATimeoutableMatcher" do
+      be_a_timeoutable(:timeout_in => 5.minutes).should be_an_instance_of(Remarkable::Devise::Matchers::BeATimeoutableMatcher)
+    end
+  end
 end
