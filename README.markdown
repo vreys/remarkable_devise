@@ -17,6 +17,7 @@ Add the require after the remarkable/active_record line in your spec_heplers.rb:
 ## Usage
 
 Suppose that we require authentication of users. And we want to use Devise. The problem that we face a number of requirements:
+
 * The user must be authorized by email or login
 * Password should contain 8 to 20 characters
 * After 3 unsuccessful attempts to authenticate, the account should be locked in 5 hours
