@@ -38,8 +38,8 @@ Following the BDD way, we first write a specs:
 
       should_be_a_lockable do |o|
         o.lock_strategy = :failed_attempts
-        o.maximum_attempts => 3
-        o.unlock_strategy => :time
+        o.maximum_attempts = 3
+        o.unlock_strategy = :time
       end
   
       should_be_a_database_authenticatable do |o|
