@@ -6,8 +6,7 @@ module Remarkable
       class BeADatabaseAuthenticatableMatcher < BeAnAuthenticatableMatcher
         arguments
 
-        assertion :included?, :has_email_column?, :has_encrypted_password_column?, :has_password_salt_column?,
-        :options_match?
+        assertion :included?, :has_email_column?, :has_encrypted_password_column?, :options_match?
 
         optionals :stretches, :encryptor
 
